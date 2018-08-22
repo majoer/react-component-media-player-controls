@@ -25,6 +25,21 @@ module.exports = {
           "css-loader",
           "sass-loader"
         ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader"
+        ]
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        use: ['file-loader?name=public/fonts/[name].[ext]']
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: ["file-loader?name=/public/icons/[name].[ext]"]
       }
     ]
   }

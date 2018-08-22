@@ -1,11 +1,3 @@
-import React, { Component } from "react";
-import './index.scss';
+import { MediaPlayerControlsComponent } from './media-player-controls/MediaPlayerControlsComponent'
 
-class MyComponent extends Component {
-
-  render() {
-    return <div>MyComponent</div>
-  }
-};
-
-export default MyComponent;
+export { MediaPlayerControlsComponent };
