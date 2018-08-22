@@ -1,10 +1,53 @@
-## React Library Template
+# React Component - Media Player Controls
 
-#### Supports
+## How to use
 
-- jsx
-- scss
+```
+class TestApp extends Component {
 
-#### Credits
+  state = {
+    volume: 0,
+    isMuted: false,
+    currentTime: 0,
+    duration: 1000,
+    isPlaying: false,
+    isPaused: false,
+    isBuffering: false,
+    title: 'Awesome video 1'
+  }
 
-https://medium.freecodecamp.org/part-1-react-app-from-scratch-using-webpack-4-562b1d231e75
+  mediaPlayerComponentOptions = {
+    tickTimeForwardAutomatically: true,
+    onMute: () => { this.setState({ ...this.state, isMuted: true }); },
+    onUnmute: () => { this.setState({ ...this.state, isMuted: false }); },
+    onPlay: () => {
+      if (this.state.isPaused) {
+        this.setState({ ...this.state, isPlaying: true, isPaused: false });
+      } else {
+        this.setState({ ...this.state, isPlaying: true });
+      }
+    },
+    onPause: () => { this.setState({ ...this.state, isPlaying: false, isPaused: true }); },
+    onStepBackward: () => { console.log('onStepBackward'); },
+    onStepForward: () => { console.log('onStepForward'); },
+
+    onSeek: throttle(500, (currentTime) => {
+      setTimeout(() => {
+        this.setState({ ...this.state, currentTime });
+      }, 3000)
+    }),
+
+    onChangeVolume: throttle(300, (volume) => {
+      setTimeout(() => {
+        this.setState({ ...this.state, volume });
+      }, 3000)
+    })
+  }
+
+  render() {
+    return <div>
+      <MediaPlayerControlsComponent options={this.mediaPlayerComponentOptions} {...this.state} />
+    </div>
+  }
+}
+```
