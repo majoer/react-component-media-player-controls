@@ -3,6 +3,11 @@
 ## How to use
 
 ```
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { MediaPlayerControlsComponent } from 'react-component-media-player-controls';
+import { throttle } from 'throttle-debounce';
+
 class TestApp extends Component {
 
   state = {
